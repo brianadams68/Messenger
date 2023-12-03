@@ -13,14 +13,14 @@ const useRoutes = () => {
         {
             label: 'Chat',
             href: '/conversations',
-            icon: 'Hichat',
-            active: pathname === '/conversations' || !!conversationId,
+            icon: HiChat,
+            active: pathname === '/conversations' || !!conversationId
         },
         {
             label: 'User',
             href: '/users',
             icon: HiUsers,
-            active: pathname === '/Users',
+            active: pathname === '/users',
 
         },
         {
