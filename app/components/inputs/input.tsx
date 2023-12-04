@@ -1,7 +1,6 @@
 'use cliet';
 
 import clsx from "clsx";
-import { error } from "console";
 import {FieldErrors, FieldValues, UseFormRegister} from "react-hook-form";
 
 interface InputProps {

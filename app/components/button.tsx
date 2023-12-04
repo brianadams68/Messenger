@@ -1,7 +1,6 @@
 'use client'
 
 import clsx from "clsx";
-import { type } from "os";
 import React from "react";
 
 interface ButtonProps {

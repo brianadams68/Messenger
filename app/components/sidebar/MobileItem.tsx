@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
 import Link from "next/link";
 import clsx from "clsx";
 import React from "react";
 
 interface MobileItemProps {
-    href: string,
-    icon: any,
+    href: string;
+    icon: any;
     onClick?: () => void;
-    active?: boolean,
+    active?: boolean;
 }
 
 const MobileItem: React.FC<MobileItemProps> = ({href, icon: Icon, onClick, active}) => {

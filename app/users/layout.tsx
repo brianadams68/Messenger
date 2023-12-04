@@ -13,10 +13,8 @@ export default async function UsersLayout({
     return (
         <SideBar>
           <div className="h-full ">
-            <main className='lg:pl-20 h-full'>
                 <UserList items={users}/>
                 {children}
-            </main>
           </div>
         </SideBar>
     )
