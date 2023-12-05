@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import clsx from "clsx";
 import { FullConversationType } from "../../types";
 import useOtherUser from "../../hooks/useOtherUser";
+import Avatar from "../../components/Avatar";
 
 interface ConversationBoxProps {
   data: FullConversationType;
@@ -33,8 +34,8 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
   }, [data.messages]);
 
   const userEmail = useMemo(() => {
-    return session?.data?.user?.email;
-  }, [session?.data?.user?.email]);
+    return session.data?.user?.email;
+  }, [session.data?.user?.email]);
 
   const hasSeen = useMemo(() => {
     if (!lastMessage) {
@@ -48,9 +49,31 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
     }
 
     return seenArray.filter((user) => user.email === userEmail).length !== 0;
-  }, []);
+  }, [userEmail, lastMessage]);
 
-  return <div>Conversation Box</div>;
+  const lastMessageText = useMemo(() => {
+    if (lastMessage?.image) {
+      return "Sent an image";
+    }
+
+    if (lastMessage?.body) {
+      return lastMessage.body;
+    }
+
+    return "Started a conversation";
+  }, [lastMessage]);
+
+  return (
+    <div
+      onClick={handleClick}
+      className={clsx(
+        `w-full relative flex items-center space-x-3 hover:bg-neutral-100 rounded-ls transition cursor-pointer`,
+        selected ? "bg-neutral-100" : "bg-white"
+      )}
+    >
+      <Avatar user={otherUser}/>
+    </div>
+  );
 };
 
 export default ConversationBox;
